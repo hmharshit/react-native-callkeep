@@ -48,6 +48,8 @@ import static io.wazo.callkeep.RNCallKeepModule.ACTION_UNMUTE_CALL;
 import static io.wazo.callkeep.RNCallKeepModule.EXTRA_CALLER_NAME;
 import static io.wazo.callkeep.RNCallKeepModule.EXTRA_CALL_NUMBER;
 import static io.wazo.callkeep.RNCallKeepModule.EXTRA_CALL_UUID;
+import static io.wazo.callkeep.RNCallKeepModule.ACTION_SHOW_INCOMING_CALL_UI;
+
 
 @TargetApi(Build.VERSION_CODES.M)
 public class VoiceConnection extends Connection {
@@ -180,6 +182,12 @@ public class VoiceConnection extends Connection {
         super.onUnhold();
         sendCallRequestToActivity(ACTION_UNHOLD_CALL, handle);
         setActive();
+    }
+
+    @Override
+    public void onShowIncomingCallUi() {
+        Log.d(TAG, "onShowIncomingCallUi()");
+        sendCallRequestToActivity(ACTION_SHOW_INCOMING_CALL_UI, handle);
     }
 
     @Override

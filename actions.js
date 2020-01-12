@@ -13,6 +13,7 @@ const RNCallKeepDidPerformSetMutedCallAction = 'RNCallKeepDidPerformSetMutedCall
 const RNCallKeepDidToggleHoldAction = 'RNCallKeepDidToggleHoldAction';
 const RNCallKeepDidPerformDTMFAction = 'RNCallKeepDidPerformDTMFAction';
 const RNCallKeepProviderReset = 'RNCallKeepProviderReset';
+const RNCallKeepShowIncomingCallUi = 'RNCallKeepShowIncomingCallUi'
 const RNCallKeepCheckReachability = 'RNCallKeepCheckReachability';
 const isIOS = Platform.OS === 'ios';
 
@@ -52,6 +53,10 @@ const didPerformDTMFAction = handler =>
 const didResetProvider = handler =>
   eventEmitter.addListener(RNCallKeepProviderReset, handler);
 
+const showIncomingCallUi = handler =>
+  eventEmitter.addListener(RNCallKeepShowIncomingCallUi, (data) => handler(data));
+
+
 const checkReachability = handler =>
   eventEmitter.addListener(RNCallKeepCheckReachability, handler);
 
@@ -67,4 +72,5 @@ export const listeners = {
   didPerformDTMFAction,
   didResetProvider,
   checkReachability,
+  showIncomingCallUi
 };
